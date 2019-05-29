@@ -2,26 +2,6 @@ gl.setup(NATIVE_WIDTH, NATIVE_HEIGHT)
 
 local interval = 30
 
-util.auto_loader(_G)
-
-local distort_shader = resource.create_shader([[
-    uniform sampler2D Texture;
-    uniform float effect;
-    varying vec2 TexCoord;
-    uniform vec4 Color;
-    void main() {
-        vec2 uv = TexCoord.st;
-        vec4 col;
-        col.r = texture2D(Texture, vec2(uv.x+sin(uv.y*20.0*effect)*0.2,uv.y)).r;
-        col.g = texture2D(Texture, vec2(uv.x+sin(uv.y*25.0*effect)*0.2,uv.y)).g;
-        col.b = texture2D(Texture, vec2(uv.x+sin(uv.y*30.0*effect)*0.2,uv.y)).b;
-        col.a = texture2D(Texture, vec2(uv.x,uv.y)).a;
-        vec4 foo = vec4(1.0,1.0,1.0,effect);
-        col.a = 1.0;
-        gl_FragColor = Color * col * foo;
-    }
-]])
-
 function make_switcher(childs, interval)
     local next_switch = 0
     local child
