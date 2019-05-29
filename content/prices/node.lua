@@ -3,21 +3,26 @@ gl.setup(1920, 1080)
 util.resource_loader{
     "font.ttf";
     "background.png";
-    "toolbox.png";
+    "waffeln.png";
 }
 
 local Absatz = "absatz"
 
 local preise = {
-    {"Mate",      "1.50"},
-    {"Bier/Radler",      "1.50"},
-    {"Softdrinks",   "1.00"},
-    {"Wasser",    "0.75"},
-    {"Kaffee",    "0.50"},
+    {" GPN19 - Waffeldaten", ""},
     Absatz,
-    {"Snacks, Eis",   "0.50"},
-    {"Waffeln",   "0.50"},
-    {"TK-Pizza",   "2,50"},
+    {"Material/Waffel",      " 56 ct"},
+    {"Material GPN19",   "1200€"},
+    Absatz,
+    {"Portionen Teig",    "39"},
+    {"mit jeweils ~78kg Mehl", ""},
+    Absatz,
+    {"Apfelmus",    "55kg"},
+    {"Marmelade",    "30kg"},
+    {"Puderzucker",   "5kg"},
+    {"Waffeleisen",   "4 stk"},
+    Absatz,
+    {"Weitere Infos: c3woc.org",   ""},
 }
 
 function Preisliste(preise, x, y, spacing, size)
@@ -282,7 +287,7 @@ end
 
 local pic = PicRotation(980, 350, WIDTH-100, HEIGHT-200, 8)
 local term = Crapterm(source, 35, 950, 100)
-local preisliste = Preisliste(preise, 35, 50, 640, 80)
+local preisliste = Preisliste(preise, 35, 50, 620, 62)
 
 local countdown = sys.now() + math.random() * 10
 
@@ -304,7 +309,7 @@ function node.render()
             gl.rotate(math.sin(sys.now()/2.0)*15, 1, 0, 0)
             gl.rotate(math.sin(sys.now()/5.0)*8, 0, 1, 0)
             gl.translate(0, -200)
-            util.draw_correct(toolbox, 0, 0, 1200, 400, 1,0,0,1)
+            util.draw_correct(waffeln, 1, 0, 1200, 420, 1,0,0,1)
         gl.popMatrix()
         gl.ortho()
     logo_shader:deactivate()
